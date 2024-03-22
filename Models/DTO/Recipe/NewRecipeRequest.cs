@@ -15,7 +15,7 @@ namespace RecipeDB.Models.DTO.Recipe
         public string? Title { get; set; }
 
         [Required]
-        public List<string>? IngredientsList { get; set; }
+        public List<string> IngredientsList { get; set; } = [];
 
         [Required]
         [StringLength(int.MaxValue)]

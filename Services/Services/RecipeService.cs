@@ -31,10 +31,15 @@ namespace RecipeDB.Services.Services
             Recipe? createdRecipe = _recipeRepo.CreateRecipe(recipe);
 
             RecipeResponse? response = _mapper.Map<RecipeResponse>(createdRecipe);
-            response.IngredientsList = createdRecipe.Ingredients.Select(i => i.Name).ToList();
-            response.Rating = createdRecipe.Ratings.Count > 0
-                                  ? (createdRecipe.Ratings.Select(r => r.Note).ToList().Average()).ToString()
-                                  : "No ratings yet";
+
+            if (createdRecipe != null)
+            {
+                response.IngredientsList = createdRecipe.Ingredients.Select(i => i.Name).ToList();
+                response.Rating = createdRecipe.Ratings.Count > 0
+                                      ? (createdRecipe.Ratings.Select(r => r.Note).ToList().Average()).ToString()
+                                      : "No ratings yet";
+            }
+            
             return response;
         }
 
@@ -45,17 +50,21 @@ namespace RecipeDB.Services.Services
 
         public RecipeResponse? UpdateRecipe(RecipeUpdateRequest request)
         {
-            Recipe? recipe = _mapper.Map<Recipe>(request);
+            Recipe recipe = _mapper.Map<Recipe>(request);
             recipe.Ingredients = request.IngredientsList.Select(i => new Ingredient() { Name = i }).ToList();
 
             Recipe? updatedRecipe = _recipeRepo.UpdateRecipe(recipe);
 
             RecipeResponse? response = _mapper.Map<RecipeResponse>(updatedRecipe);
-            response.IngredientsList = updatedRecipe.Ingredients.Select(i => i.Name).ToList();
-            response.Rating = updatedRecipe.Ratings.Count > 0
-                                  ? (updatedRecipe.Ratings.Select(r => r.Note).ToList().Average()).ToString()
-                                  : "No ratings yet";
-           
+
+            if(updatedRecipe != null)
+            {
+                response.IngredientsList = updatedRecipe.Ingredients.Select(i => i.Name).ToList();
+                response.Rating = updatedRecipe.Ratings.Count > 0
+                                      ? (updatedRecipe.Ratings.Select(r => r.Note).ToList().Average()).ToString()
+                                      : "No ratings yet";
+            }
+              
             return response;
         }
 

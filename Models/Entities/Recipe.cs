@@ -8,7 +8,7 @@ namespace RecipeDB.Models.Entities
         public int Id { get; set; }
         [Required]
         [StringLength(100)]
-        public string? Title { get; set; }
+        public string Title { get; set; } = default!;
 
         [Required]
         [StringLength(int.MaxValue)]

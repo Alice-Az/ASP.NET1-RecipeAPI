@@ -12,7 +12,7 @@ namespace RecipeDB.Models.DTO.Recipe
 
         public string? Title { get; set; }
 
-        public List<string>? IngredientsList { get; set; }
+        public List<string> IngredientsList { get; set; } = [];
 
         public string? Description { get; set; }
         public string? Rating { get; set; }

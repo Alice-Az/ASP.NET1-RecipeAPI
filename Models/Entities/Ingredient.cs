@@ -9,7 +9,7 @@ namespace RecipeDB.Models.Entities
 
         [Required]
         [StringLength(50)]
-        public string? Name { get; set; }
+        public string Name { get; set; } = default!;
 
         [Required]
         public int RecipeId { get; set; }

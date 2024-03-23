@@ -7,9 +7,9 @@ using RecipeDB.Services.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddAutoMapper(typeof(Program).Assembly);
 builder.Services.AddControllers();
 builder.Services.AddSwaggerGen();
+builder.Services.AddAutoMapper(typeof(Program).Assembly);
 builder.Services.AddDbContext<RecipeDBContext>(
      options => options.UseSqlServer(@"Data Source=localhost;Initial Catalog=RecipeDB;Integrated Security=SSPI;TrustServerCertificate=True;")
  );
@@ -22,7 +22,7 @@ builder.Services.AddScoped<IRecipeService, RecipeService>();
 builder.Services.AddScoped<IRatingRepo, RatingRepo>();
 builder.Services.AddScoped<IRatingService, RatingService>();
 
-var app = builder.Build();
+ var app = builder.Build();
 
 app.UseRouting();
 app.UseEndpoints(endpoints => {  endpoints.MapControllers(); });

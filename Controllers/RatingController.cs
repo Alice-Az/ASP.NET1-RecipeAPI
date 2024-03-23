@@ -16,7 +16,7 @@ namespace RecipeDB.Controllers
             _service = service;
         }
 
-        [HttpPost("/rate-recipe")]
+        [HttpPost("rate-recipe")]
         public IActionResult CreateRating(NewRatingRequest request)
         {
             RatingResponse? response = _service.CreateRating(request);

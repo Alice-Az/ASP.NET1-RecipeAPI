@@ -18,7 +18,7 @@ namespace RecipeDB.Controllers
             _service = service;
         }
 
-        [HttpPost("/post-recipe")]
+        [HttpPost("post-recipe")]
         public IActionResult CreateRecipe(NewRecipeRequest request)
         {
             RecipeResponse? recipe = _service.CreateRecipe(request);
@@ -29,7 +29,7 @@ namespace RecipeDB.Controllers
             return Ok(recipe);
         }
 
-        [HttpPut("/update-recipe")]
+        [HttpPut("update-recipe")]
         public IActionResult UpdateRecipe(RecipeUpdateRequest request)
         {
             RecipeResponse? recipe = _service.UpdateRecipe(request);
@@ -38,14 +38,14 @@ namespace RecipeDB.Controllers
             return Ok(recipe);
         }
 
-        [HttpDelete("/delete-recipe/{userId}/{recipeId}")]
+        [HttpDelete("delete-recipe/{userId}/{recipeId}")]
         public IActionResult DeleteRecipe(int userId, int recipeId)
         {
             if (_service.DeleteRecipe(userId, recipeId)) return NoContent();
             return BadRequest("Felaktiga information");
         }
 
-        [HttpPost("/search/{search}")]
+        [HttpPost("search/{search}")]
         public IActionResult GetRecipes(string search)
         {
             List<RecipeResponse>? recipes = _service.GetRecipes(search);

@@ -1,6 +1,4 @@
-﻿using Azure;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using RecipeDB.Models.DTO.User;
 using RecipeDB.Services.Interfaces;
 
@@ -17,7 +15,7 @@ namespace RecipeDB.Controllers
             _service = service;
         }
 
-        [HttpPost("/login")]
+        [HttpPost("login")]
         public IActionResult Login(LoginRequest request)
         {
             UserResponse? user = _service.Login(request);
@@ -28,7 +26,7 @@ namespace RecipeDB.Controllers
             return Ok(user);
         }
 
-        [HttpPost("/sign-up")]
+        [HttpPost("sign-up")]
         public IActionResult CreateUser(NewUserRequest request)
         {
             UserResponse? user = _service.CreateUser(request);
@@ -39,14 +37,14 @@ namespace RecipeDB.Controllers
             return Ok(user);
         }
 
-        [HttpDelete("/delete/{id}")]
+        [HttpDelete("delete/{id}")]
         public IActionResult DeleteUser(int id) 
         {
             if (_service.DeleteUser(id)) return NoContent();
             return BadRequest("Felaktig userId");
         }
 
-        [HttpPut("/update")]
+        [HttpPut("update")]
         public IActionResult UpdateUser(UserUpdateRequest request)
         {
             UserResponse? user = _service.UpdateUser(request);

@@ -4,7 +4,7 @@ namespace RecipeDB.Services.Interfaces
 {
     public interface IUserService
     {
-        UserResponse? Login(LoginRequest request);
+        LoginResponse? Login(LoginRequest request);
         UserResponse? CreateUser(NewUserRequest request);
         UserResponse? UpdateUser(UserUpdateRequest request);
         bool DeleteUser(int userId);

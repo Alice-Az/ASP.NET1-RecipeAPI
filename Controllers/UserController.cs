@@ -18,7 +18,7 @@ namespace RecipeDB.Controllers
         [HttpPost("login")]
         public IActionResult Login(LoginRequest request)
         {
-            UserResponse? user = _service.Login(request);
+            LoginResponse? user = _service.Login(request);
 
             if (user == null)
                 return BadRequest("Felaktig inloggning");
@@ -32,7 +32,7 @@ namespace RecipeDB.Controllers
             UserResponse? user = _service.CreateUser(request);
 
             if (user == null)
-                return BadRequest("En användare med samma email redan finns");
+                return BadRequest("En användare med samma email eller samma användarnamn redan finns");
 
             return Ok(user);
         }

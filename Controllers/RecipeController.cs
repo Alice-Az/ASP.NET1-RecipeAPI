@@ -38,14 +38,14 @@ namespace RecipeDB.Controllers
             return Ok(recipe);
         }
 
-        [HttpDelete("delete-recipe/{userId}/{recipeId}")]
+        [HttpDelete("delete-recipe/{userId}/{recipeid}")]
         public IActionResult DeleteRecipe(int userId, int recipeId)
         {
             if (_service.DeleteRecipe(userId, recipeId)) return NoContent();
             return BadRequest("Felaktiga information");
         }
 
-        [HttpPost("search/{search}")]
+        [HttpGet("search/{search}")]
         public IActionResult GetRecipes(string search)
         {
             List<RecipeResponse>? recipes = _service.GetRecipes(search);

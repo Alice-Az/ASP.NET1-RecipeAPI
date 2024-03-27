@@ -29,10 +29,10 @@ namespace RecipeDB.Services.Services
             return _repo.DeleteUser(userId);
         }
 
-        public UserResponse? Login(LoginRequest request)
+        public LoginResponse? Login(LoginRequest request)
         {
             User? response = _repo.Login(request.Username, request.Password);
-            return _mapper.Map<UserResponse>(response);
+            return _mapper.Map<LoginResponse>(response);
         }
 
         public UserResponse? UpdateUser(UserUpdateRequest request)

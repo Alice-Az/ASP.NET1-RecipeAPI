@@ -1,7 +1,9 @@
 ﻿namespace RecipeDB.Models.DTO.User
 {
-    public class UserResponse
+    public class LoginResponse
     {
+
+        public int Id { get; set; }
         public string? Username { get; set; }
         public string? Email { get; set; }
     }

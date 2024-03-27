@@ -16,7 +16,7 @@ namespace RecipeDB.Repository.Repos
         {
             try
             {
-                bool userExists = _context.Users.Any(u => u.Email == user.Email);
+                bool userExists = _context.Users.Any(u => u.Email == user.Email || u.Username == user.Username);
 
                 if (!userExists)
                 {

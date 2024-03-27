@@ -11,6 +11,7 @@ namespace RecipeDB.Mappers
             CreateMap<User, UserResponse>();
             CreateMap<NewUserRequest, User>();
             CreateMap<UserUpdateRequest, User>();
+            CreateMap<User, LoginResponse>();
         }
     }
 }
